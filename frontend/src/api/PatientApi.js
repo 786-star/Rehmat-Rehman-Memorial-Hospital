@@ -19,7 +19,6 @@ export const searchPatient = async ({ mrid, cnic }) => {
     if (cnic) params.cnic = cnic.trim();
 
     const response = await getData(GetPatient, params);
-    console.log(response.data)
     return response?.data || null;
   } catch (error) {
     if (error?.response?.status === 404) {

@@ -15,7 +15,6 @@ import TextInput from '@/components/Form/Input';
 
 const TokenModal = ({ onClose }) => {
     const [tokenData, setTokenData] = useState(null);
-    console.log(tokenData)
     const [showDownload, setShowDownload] = useState(false);
     const [buttonDisabled, setButtonDisabled] = useState(true);
     
@@ -41,7 +40,6 @@ const TokenModal = ({ onClose }) => {
     });
 
     const onSubmit = async (values) => {
-        console.log(values)
         mutate(values);
     };
     const handleDownloadClick = () => {

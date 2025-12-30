@@ -10,7 +10,6 @@ export const addAppointment = async (values) => {
 export const getAppointment = async () => {
   try {
     const response = await getData(GetAppointmentList);
-    console.log(response)
     return response || [];
   } catch (error) {
     console.error(error);

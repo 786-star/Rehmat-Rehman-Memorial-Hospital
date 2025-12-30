@@ -100,12 +100,10 @@ exports.addPatient = async (req, res) => {
 exports.getPatient = async (req, res) => {
   try {
     const { mrid, cnic } = req.query;
-    console.log("req.query:", req.query);
     // Search by MRID or cnic
     if (mrid || cnic) {
       const query = mrid ? { mrid } : { CNIC: cnic };
       const patient = await RegisterPatient.findOne(query);
-      console.log("patient found:", patient);
 
       if (!patient) {
         return res.status(404).json({

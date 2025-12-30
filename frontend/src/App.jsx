@@ -5,7 +5,7 @@ import OpenRoute from './routes/OpenRoute';
 import ProtectedRoute from './routes/ProtectedRoute';
 import AppointmentList from './pages/AppointmentList/AppointmentList';
 
-// Lazy load pages
+
 const Layout = lazy(() => import('./components/layout/Layout'))
 const Dashboard = lazy(() => import('./pages/Dashboard/Dashboard'));
 const PatientRegistration = lazy(() => import('./pages/PatientRegistration/PatientRegistration'));
