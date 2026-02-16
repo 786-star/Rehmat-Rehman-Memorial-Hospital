@@ -65,7 +65,6 @@ const TokenSlipPDF = ({ data }) => {
     <Document>
       <Page size={[226, 350]} style={styles.page}>
         <View style={styles.headerContainer}>
-          {/* <Image style={styles.logo} src="/path/to/logo.png" /> */}
           <Text style={styles.hospitalName}>Rehmat Rehman Hospital</Text>
           <Text style={styles.tokenTitle}>Token Slip</Text>
         </View>

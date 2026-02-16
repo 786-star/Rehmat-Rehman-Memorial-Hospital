@@ -15,7 +15,7 @@ const BookingAppointmentForm = ({ setPatientInfo, patientInfo }) => {
   const handleSearchPatient = async () => {
     const mrid = form.getValues("mrid").trim();
     const cnic = form.getValues("cnic")?.trim();
-    
+
     if (!mrid && !cnic) {
       return toast.error("Please enter MRID or CNIC");
     }
@@ -30,6 +30,9 @@ const BookingAppointmentForm = ({ setPatientInfo, patientInfo }) => {
         setLoading(false);
         return;
       }
+
+      form.setValue("mrid", result.mrid || "");
+      form.setValue("cnic", result.CNIC || "");
 
       setPatientInfo(result);
       toast.success("Patient found");
@@ -46,8 +49,8 @@ const BookingAppointmentForm = ({ setPatientInfo, patientInfo }) => {
     <>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 items-end">
         <TextInput label="MRID" placeholder="Enter MRID to search" control={form.control} name="mrid" />
-        <CNICInput label="CNIC" name="cnic" control={form.control} placeholder="Enter CNIC to search"/>
-        <Button label={loading ? "Searching..." : "Search Patient"} onClick={handleSearchPatient} />
+        <CNICInput label="CNIC" name="cnic" control={form.control} placeholder="Enter CNIC to search" />
+        <Button label={loading ? "Searching..." : "Search Patient"} onClick={handleSearchPatient} disabled={loading} />
       </div>
       {patientInfo && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4  rounded-xl">
@@ -61,11 +64,7 @@ const BookingAppointmentForm = ({ setPatientInfo, patientInfo }) => {
             value={patientInfo.phone}
             disabled
           />
-          <TextInput
-            label="CNIC"
-            value={patientInfo.CNIC}
-            disabled
-          />
+          
         </div>
       )}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -97,32 +96,6 @@ const BookingAppointmentForm = ({ setPatientInfo, patientInfo }) => {
           control={form.control}
         />
       </div>
-      {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <TextInput label="MRID" placeholder="Search Patient" control={form.control} name="mrid" />
-        <Button label="Search Patient" onClick={handleSearchPatient} /> */}
-      {/* <TextInput label="Patient Name" placeholder="Lookup patient or create new" control={form.control} name="patient" readOnly />
-        <PhoneInput control={form.control} name="phone" />
-        <CNICInput control={form.control} name="cnic" /> */}
-      {/* {patientInfo && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <TextInput
-              label="Patient Name"
-              value={`${patientInfo.firstName} ${patientInfo.lastName}`}
-              disabled
-            />
-            <PhoneInput label="Phone" control={form.control} value={patientInfo.phone} disabled />
-            <CNICInput label="CNIC" control={form.control} value={patientInfo.CNIC} disabled />
-          </div>
-        )}
-        <Dropdown label="Department" name="department" options={Departments} control={form.control} />
-      </div> */}
-      {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Dropdown label="Doctor" name="doctor" options={Doctor} control={form.control} />
-        <TextInput type='date' name='date' label='Date' control={form.control} />
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Dropdown label="Time Slot" name="timeSlot" options={TimeSlots} control={form.control} />
-      </div> */}
     </>
   )
 }

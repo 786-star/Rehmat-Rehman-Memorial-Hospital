@@ -1,6 +1,6 @@
 const Token = require("../model/tokenModel");
 
-exports.generateTokenService = async ({ patientName, phoneNumber }) => {
+exports.generateTokenService = async ({ patientName, phoneNumber, CNIC }) => {
   if (!patientName || !phoneNumber) {
     throw {
       status: 400,
@@ -36,6 +36,7 @@ exports.generateTokenService = async ({ patientName, phoneNumber }) => {
     phoneNumber,
     mrid,
     tokenNo,
+    CNIC,
     estimatedTime: "20-30 Minutes"
   });
 
@@ -46,6 +47,7 @@ exports.generateTokenService = async ({ patientName, phoneNumber }) => {
       mrid: token.mrid,
       patientName: token.patientName,
       phoneNumber: token.phoneNumber,
+      CNIC: token.CNIC,
       estimatedTime: token.estimatedTime,
       createdAt: token.createdAt
     }
@@ -58,7 +60,7 @@ exports.getTokenByMRIDService = async (mrid) => {
     throw { status: 400, message: "MRID is required" };
   }
   try {
-    const token = await Token.findOne({ mrid }).select('mrid patientName phoneNumber tokenNo createdAt');
+    const token = await Token.findOne({ mrid }).select('mrid patientName phoneNumber tokenNo createdAt CNIC');
     if (!token) {
       throw { status: 404, message: "No token found with this MRID" };
     }

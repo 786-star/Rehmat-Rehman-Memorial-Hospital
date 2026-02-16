@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label';
 import { formatCNIC } from '@/lib/utils';
 
 
-const CNICInput = ({ control, name, label = 'CNIC', placeholder = '00000-000000-0', className = '' }) => {
+const CNICInput = ({ control, name, label = 'CNIC', placeholder = '00000-000000-0', className = '', disabled = false, ...props }) => {
   return (
     <div className={`space-y-1 ${className}`}>
       {label && <Label htmlFor={name}>{label}</Label>}
@@ -30,6 +30,8 @@ const CNICInput = ({ control, name, label = 'CNIC', placeholder = '00000-000000-
                 onChange={handleChange}
                 placeholder={placeholder}
                 className={fieldState.error ? 'border-red-500 focus-visible:ring-red-500' : ''}
+                disabled={disabled}
+                {...props}
               />
               {fieldState.error && (
                 <p className="text-sm text-red-500">{fieldState.error.message}</p>

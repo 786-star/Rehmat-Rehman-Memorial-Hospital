@@ -6,7 +6,7 @@ export const patientSchema = z.object({
     lastName: z.string().min(1, getErrorMessage()),
     gender: z.string().min(1, getErrorMessage()),
     patientType: z.string().min(1, getErrorMessage()),
-    CNIC: z.string().min(1, getErrorMessage()).regex(/^\d{5}-\d{7}-\d{1}$/, "Please enter a valid CNIC in 12345-1234567-1 format"),
+    CNIC: z.string().optional(),
     age: z.string().min(1, getErrorMessage()),
     phone: z.string().min(1, getErrorMessage()).regex(/^03[0-9]{9}$/, "Please enter a valid Pakistani mobile number"),
     maritalStatus: z.string().min(1, getErrorMessage()),

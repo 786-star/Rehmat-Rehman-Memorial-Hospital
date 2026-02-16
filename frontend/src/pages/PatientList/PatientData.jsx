@@ -60,7 +60,7 @@ const PatientData = () => {
           isLoading={isLoading}
           emptyMessage="No Patients found."
           searchable={true}
-          className="h-[700px]"
+          className="h-[67vh] overflow-y-auto scroll-smooth"
         />
       </div>
     </div>

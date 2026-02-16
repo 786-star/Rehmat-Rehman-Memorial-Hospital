@@ -7,11 +7,13 @@ export const tokenSchema = z.object({
         .min(1, getErrorMessage())
         .regex(/^[A-Za-z\s]+$/, 'Only alphabets are allowed'),
         phoneNumber : z.string().min(1, getErrorMessage()).regex(/^03[0-9]{9}$/, "Please enter a valid Pakistani mobile number"),
+        CNIC : z.string().optional(),
 });
 
 export const defaultValues = {
     patientName: '',
     phoneNumber: '',
+    CNIC : ''
 }; 
 
 export const tokenSummarySchema = z.object({

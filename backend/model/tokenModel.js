@@ -9,6 +9,9 @@ const tokenSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    CNIC : {
+        type : String,
+    },
     tokenNo: {
         type: Number,
         required: true,

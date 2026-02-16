@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet } from '@react-pdf/renderer';
+import TimingCheckboxGroup from './TimingCheckboxGroup';
 
 
 const styles = StyleSheet.create({
@@ -44,14 +45,13 @@ const styles = StyleSheet.create({
 });
 
 const TreatmentTable = () => {
-    const columns = ['Sr. No', 'Medicine &', 'Dose', 'Route', 'Frequency', 'Timing', 'Duration'];
+    const columns = ['Sr. No', 'Medicine &', 'Dose', 'Frequency', 'Timing', 'Duration'];
+    
     const rows = Array(10).fill(null);
 
     return (
         <View style={styles.tableContainer}>
-            {/* Left vertical label */}
             <View style={{ flexDirection: 'row' }}>
-
                 <View style={{ flex: 1 }}>
                     <View style={styles.headerRow}>
                         {columns.map((col, i) => (
@@ -59,7 +59,9 @@ const TreatmentTable = () => {
                                 key={i}
                                 style={[
                                     styles.headerCell,
-                                    { flex: i === 1 ? 2 : 1 },
+                                    {
+                                        flex: i === 1 ? 2 : i === 4 ? 2 : 1
+                                    },
                                 ]}
                             >
                                 {col}
@@ -73,15 +75,9 @@ const TreatmentTable = () => {
                             <Text style={[styles.cell, { flex: 2 }]}></Text>
                             <Text style={[styles.cell, { flex: 1 }]}></Text>
                             <Text style={[styles.cell, { flex: 1 }]}></Text>
-                            <Text style={[styles.cell, { flex: 1 }]}></Text>
-                            <Text
-                                style={[
-                                    styles.cell,
-                                    { flex: 1 },
-                                ]}
-                            >
-                                Before or after meal
-                            </Text>
+                            <View style={[styles.cell, { flex: 2, justifyContent: 'center' }]}>
+                                <TimingCheckboxGroup />
+                            </View>
                             <Text style={[styles.cell, { flex: 1 }]}></Text>
                         </View>
                     ))}

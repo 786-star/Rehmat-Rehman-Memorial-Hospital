@@ -12,13 +12,14 @@ import { PDFDownloadLink } from '@react-pdf/renderer';
 import TokenSlipPDF from '@/components/PatientPDF/TokenSlipPDF';
 import TextInput from '@/components/Form/Input';
 import PhoneInput from "../Form/PhoneInput";
+import CNICInput from "../Form/CNICInput";
 
 
 const TokenModal = ({ onClose }) => {
     const [tokenData, setTokenData] = useState(null);
     const [showDownload, setShowDownload] = useState(false);
     const [buttonDisabled, setButtonDisabled] = useState(true);
-    
+
     const form = useForm({
         resolver: zodResolver(tokenSchema),
         defaultValues
@@ -47,6 +48,7 @@ const TokenModal = ({ onClose }) => {
         setTimeout(() => {
             setShowDownload(false);
         }, 1000);
+        onClose();
     };
 
     useEffect(() => {
@@ -76,6 +78,7 @@ const TokenModal = ({ onClose }) => {
                                 onChange={handleInput}
                             />
                             <PhoneInput control={form.control} name="phoneNumber" />
+                            <CNICInput control={form.control} name="CNIC" />
                             <div className="flex gap-2">
                                 {!showDownload && (
                                     <Button

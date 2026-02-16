@@ -63,7 +63,7 @@ const AppointmentList = () => {
           data={data}
           isLoading={isFetching}
           searchable
-          className="h-[70vh]"
+          className="h-[65vh] overflow-y-auto scroll-smooth"
         />
       </div>
     </div>

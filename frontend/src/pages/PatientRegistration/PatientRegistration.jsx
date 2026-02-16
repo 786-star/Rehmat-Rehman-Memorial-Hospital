@@ -49,6 +49,7 @@ const PatientRegistration = () => {
       form.setValue("firstName", nameParts[0] || "");
       form.setValue("lastName", nameParts.slice(1).join(" ") || "");
       form.setValue("phone", tokenData.phoneNumber || "");
+      form.setValue("CNIC", tokenData.CNIC || "");
     }
   }, [tokenData, form]);
 

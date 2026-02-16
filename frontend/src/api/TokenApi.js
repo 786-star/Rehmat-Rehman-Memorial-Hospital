@@ -13,7 +13,6 @@ export const getTokenByMRID = async (mrid) => {
 
 export const getTokensByDate = async (startDate, endDate) => {
     const res = await getData(`${TokenSummary}?startDate=${startDate}&endDate=${endDate}`);
-    console.log("API Response", res);
     return res;
 };
   
